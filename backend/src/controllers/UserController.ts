@@ -17,4 +17,10 @@ export default class AuthController {
     const users: User[] = await this.userService.getAllUsers();
     res.successResponse({ users });
   };
+
+  public getUserById = async (req: Request, res: Response): Promise<void> => {
+    const id = req.params.id;
+    const user: User = await this.userService.getUserById(id);
+    res.successResponse({ user });
+  };
 }

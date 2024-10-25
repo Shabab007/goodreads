@@ -24,10 +24,13 @@ export default class UserRepository {
   }
 
   public async findUserById(id: string): Promise<User | null> {
-    return await this.userRepo.findOne({ where: { id: parseInt(id) } });
+    return await this.userRepo.findOne({
+      where: { id: parseInt(id) },
+      relations: ['reviews', 'reviews.comments', 'comments'],
+    });
   }
 
   public async findAll(): Promise<User[] | null> {
-    return await this.userRepo.find();
+    return await this.userRepo.find({ relations: ['reviews', 'reviews.comments', 'comments'] });
   }
 }

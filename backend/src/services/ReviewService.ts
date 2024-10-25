@@ -23,9 +23,7 @@ export default class ReviewService {
     try {
       // Check if the review already exists for this book and user
       let review = await this.reviewRepository.getReviewByUserAndBookId(parseInt(bookId), parseInt(userId));
-      console.log(review);
       if (review) {
-        console.log('update');
         review = await this.reviewRepository.updateReview(review, data);
       } else {
         const user = await this.userRepository.findUserById(userId);

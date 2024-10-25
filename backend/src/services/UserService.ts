@@ -27,4 +27,13 @@ export default class UserService {
       throw new NotFoundError();
     }
   };
+
+  getUserById = async (id: string) => {
+    try {
+      const user = await this.userRepository.findUserById(id);
+      return plainToInstance(UserDto, user);
+    } catch (error) {
+      throw new NotFoundError();
+    }
+  };
 }

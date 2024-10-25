@@ -12,7 +12,8 @@ export default class BookController {
   };
 
   getAllBooks = async (req: Request, res: Response) => {
-    const books = await this.bookService.getAllBooks();
+    const { page, limit } = req.query;
+    const books = await this.bookService.getAllBooks(page, limit);
     res.successResponse(books);
   };
 

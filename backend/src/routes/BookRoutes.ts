@@ -8,7 +8,7 @@ const bookController = Container.get(BookController);
 
 // Books routes
 router.get('/', bookController.getAllBooks);
-router.post('/createBook', bookController.addBook);
+router.post('/creat-book', bookController.addBook);
 router.get('/:bookId', bookController.getBookDetails);
 
 export default router;
