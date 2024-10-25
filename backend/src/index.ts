@@ -4,6 +4,7 @@ import http from 'http';
 import { AppLogger } from './utils/Logger';
 import AppDataSource from './DataSource';
 import { app } from './app';
+import { BookSeeder } from './BookGeneration';
 const PORT = Config.port || 4000;
 
 let server: http.Server;
@@ -13,6 +14,9 @@ const startServer = async () => {
     server = app.listen(PORT, (): void => {
       AppLogger.info(`🚀 sever is running on port ${PORT}`);
     });
+
+    const seeder = new BookSeeder();
+    await seeder.seed();
   } catch (error: unknown) {
     if (error instanceof Error) AppLogger.error(`Error occurr: ${error.message}`);
   }
