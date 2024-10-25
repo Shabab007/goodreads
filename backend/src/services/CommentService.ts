@@ -15,7 +15,6 @@ export default class CommentService {
     private reviewRepository: ReviewRepository
   ) {}
 
-  // Add new comment
   addComment = async (data: CommentInterface): Promise<CommentDto> => {
     try {
       // Fetch the User entity by the userId
@@ -36,16 +35,6 @@ export default class CommentService {
       throw new BadRequestError('Error creating comment');
     }
   };
-
-  // Get all comments
-  //   public getAllComments = async (): Promise<CommentDto[]> => {
-  //     try {
-  //       const comments = await this.commentRepository.findAll();
-  //       return plainToInstance(CommentDto, comments);
-  //     } catch (error) {
-  //       throw new NotFoundError('Comments not found');
-  //     }
-  //   };
 
   // Fetch comments by reviewId
   findByReviewId = async (reviewId: number): Promise<CommentDto[]> => {

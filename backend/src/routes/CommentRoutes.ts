@@ -8,9 +8,6 @@ const commentController = Container.get(CommentController);
 // Create a new comment
 commentRouter.post('/', commentController.addComment);
 
-// Get all comments
-// commentRouter.get('/', commentController.getAllComments);
-
 // Fetch comments by reviewId
 commentRouter.get('/review/:reviewId', commentController.getCommentsByReviewId);
 

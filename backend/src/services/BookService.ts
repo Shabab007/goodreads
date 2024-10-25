@@ -6,6 +6,7 @@ import { BookDto } from '../dto/book/book';
 @Service()
 export class BookService {
   constructor(public bookRepository: BookRepository) {}
+
   addBook = async (bookData: any): Promise<BookDto> => {
     const book = await this.bookRepository.addBook(bookData);
     return plainToInstance(BookDto, book);

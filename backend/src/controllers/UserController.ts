@@ -8,17 +8,17 @@ export default class AuthController {
   constructor(private userService: UserService) {}
 
   // Sign In
-  public createUser = async (req: Request, res: Response): Promise<void> => {
+  createUser = async (req: Request, res: Response): Promise<void> => {
     const user: User = await this.userService.createUser(req.body);
     res.successResponse({ user });
   };
 
-  public getAllUsers = async (req: Request, res: Response): Promise<void> => {
+  getAllUsers = async (req: Request, res: Response): Promise<void> => {
     const users: User[] = await this.userService.getAllUsers();
     res.successResponse({ users });
   };
 
-  public getUserById = async (req: Request, res: Response): Promise<void> => {
+  getUserById = async (req: Request, res: Response): Promise<void> => {
     const id = req.params.id;
     const user: User = await this.userService.getUserById(id);
     res.successResponse({ user });
