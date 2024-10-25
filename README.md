@@ -48,8 +48,8 @@ Ensure you have the following installed on your machine:
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/book-review-app.git
-cd book-review-app
+git clone https://github.com/Shabab007/goodreads.git
+cd goodreads
 ```
 
 ### Step 2: Backend Setup
