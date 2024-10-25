@@ -52,25 +52,7 @@ git clone https://github.com/Shabab007/goodreads.git
 cd goodreads
 ```
 
-### Step 2: Backend Setup
-
-- Navigate to the backend folder and install dependencies:
-
-```bash
-cd backend
-npm install
-```
-
-### Step 3: Frontend Setup
-
-- Navigate to the frontend directory and install dependencies:
-
-```bash
-cd frontend
-npm install
-```
-
-### Docker
+### Step 2
 
 It's super simple. If you already have Docker installed and running on your machine you can just run
 
