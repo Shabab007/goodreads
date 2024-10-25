@@ -19,7 +19,6 @@ export default class ReviewService {
   addReview = async (data: ReviewInterface): Promise<ReviewDto> => {
     const { bookId, userId } = data;
 
-    let review;
     try {
       // Check if the review already exists for this book and user
       let review = await this.reviewRepository.getReviewByUserAndBookId(parseInt(bookId), parseInt(userId));
