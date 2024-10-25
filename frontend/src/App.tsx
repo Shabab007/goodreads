@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src/App.tsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import BookDetails from "./pages/BookDetails";
+import Layout from "./Layout";
 
-function App() {
+import { UserProvider } from "./context/UserContext";
+import RequireUser from "./components/RequiredUser";
+import CreateUser from "./pages/CreateUser";
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <Router>
+        <Routes>
+          {/* Route for user creation page */}
+          <Route path="/create-user" element={<CreateUser />} />
+
+          {/* Protected routes */}
+          <Route element={<RequireUser />}>
+            <Route path="/" element={<Layout><MainPage /></Layout>} />
+            <Route path="/books/:id" element={<Layout><BookDetails /></Layout>} />
+            {/* other protected routes */}
+          </Route>
+        </Routes>
+      </Router>
+    </UserProvider>
   );
-}
+};
 
 export default App;

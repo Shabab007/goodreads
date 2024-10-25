@@ -8,6 +8,7 @@ const userController = Container.get(UserController);
 
 // User routes
 router.get('/', userController.getAllUsers);
-router.post('/createUser', userController.createUser);
+router.get('/:id', userController.getUserById);
+router.post('/create-user', userController.createUser);
 
 export default router;

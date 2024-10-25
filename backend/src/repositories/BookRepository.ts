@@ -10,6 +10,7 @@ export default class BookRepository {
     const book = new Book();
     book.title = bookData.title;
     book.author = bookData.author;
+    book.description = bookData.description;
     book.publishedDate = bookData.publishedDate;
     book.reviews = [];
     book.coverImage = 'https://random-image-pepebigotes.vercel.app/api/random-image';
@@ -30,16 +31,13 @@ export default class BookRepository {
     return [books, total]; // Return books and total count of books
   }
 
-  public async findById(bookId: string): Promise<Book> {
+  public async findBookById(id: string): Promise<Book | null> {
     const book = await this.bookRepo.findOne({
-      where: { id: parseInt(bookId) },
+      where: { id: parseInt(id) },
       relations: ['reviews', 'reviews.comments', 'reviews.user'], // Fetch related reviews, comments, and user
     });
 
-    return book; // Return books and total count of books
-  }
-  public async findBookById(id: string): Promise<Book | null> {
-    return await this.bookRepo.findOne({ where: { id: parseInt(id) } });
+    return book;
   }
 
   public async findAverageRatingByid(id: string): Promise<number | null> {

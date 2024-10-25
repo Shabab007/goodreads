@@ -6,7 +6,7 @@ const reviewRouter = Router();
 const reviewController = Container.get(ReviewController);
 
 // Create a new review
-reviewRouter.patch('/addReview', reviewController.addReview);
+reviewRouter.patch('/add-review', reviewController.addReview);
 
 // Get all reviews
 reviewRouter.get('/', reviewController.getAllReviews);

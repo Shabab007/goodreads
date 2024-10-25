@@ -11,22 +11,20 @@ export class BookService {
     return plainToInstance(BookDto, book);
   };
 
-  getAllBooks = async (): Promise<{ books: BookDto[]; count: number }> => {
-    const [books, count] = await this.bookRepository.findAllBooks();
+  getAllBooks = async (page: any, limit: any): Promise<{ books: BookDto[]; count: number }> => {
+    const [books, count] = await this.bookRepository.findAllBooks(parseInt(page), parseInt(limit));
     const res = plainToInstance(BookDto, books);
     return { books: res, count };
   };
   getBookDetailsWithRating = async (bookId: string): Promise<any> => {
-    // Fetch book details along with reviews, review comments, and users
     const book = await this.bookRepository.findBookById(bookId);
 
     if (!book) {
       throw new Error('Book not found');
     }
 
-    // Calculate the average rating using QueryBuilder
     const averageRating = await this.bookRepository.findAverageRatingByid(bookId);
 
-    return { ...book, averageRating }; // Include average rating in the response
+    return { ...book, averageRating };
   };
 }
