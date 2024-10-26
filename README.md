@@ -72,7 +72,7 @@ DB_USER = dbuser;
 DB_PASSWORD = dbpassword;
 ```
 
-3. A Database investigation tool named `Adminer` (You can inspect any kind of database from the browser) You can access it from `http://localhost:8080`
+3. A Database investigation tool named `Adminer` (You can inspect any kind of database from the browser) You can access it from `http://localhost:8082`
 
 If you want to change or update any code you can just make the change and from the console you will see that the server is getting updated.
 
