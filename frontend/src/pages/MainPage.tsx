@@ -117,9 +117,9 @@ const MainPage: React.FC = () => {
             {/* User Activity Section */}
             <div className="flex-1 p-4 lg:border-l lg:border-gray-300">
                 {users?.map.length && users.map(((user: User, index: number) => {
-                    return (
-                        <UserActivity key={index} user={user} />
-                    )
+                    if (user.reviews.length) {
+                        return <UserActivity key={index} user={user} />
+                    }
                 }))}
 
             </div>
